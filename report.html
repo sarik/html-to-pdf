@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet"> 
+<head>
+<style type="text/css" media="all">
+    @page 
+    {
+        size: auto;   /*A4*/
+        margin: 0mm;  /* this affects the margin in the printer settings */
+        padding: 0mm;
+    }
+    html
+    {
+        margin: 0px;  /* this affects the margin on the html before sending to printer */
+        position: relative;
+    }
+    body
+    {
+       padding: 0mm;
+        margin: 0; /* margin you want for the content */
+		font-family: 'Lato', sans-serif;
+		-webkit-print-color-adjust: exact !important;
+		-moz-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+    }
+	* {
+		margin: 0;
+		padding: 0;
+	}
+    .frontPage{
+        position: relative;
+        page-break-after: always;
+        min-height: 100vh;
+        width: 100%;
+    }
+    .topImg1{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .center-banner{
+        width: 600px;
+        min-height: 600px;
+        position: absolute;
+        top: calc(50% - 300px);
+        left: calc(50% - 300px);
+        text-align: center;
+    }
+    .footerleft{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .shivomLogo{
+        width: 395px;
+        margin-bottom: 30px;
+    }
+    .footerright{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .bubble{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 600px;
+        height: 600px;
+        z-index: 2;
+    }
+    .labels{
+        position: relative;
+    }
+    .labels h2{
+        --webkit-print-color-adjust: exact;
+        color-adjust: exact; /* Non-Webkit Browsers */        
+        position: relative;
+        z-index: 3;
+        color: #000;
+        font-size: 80px;        
+        padding: 0;
+        margin: 0;
+        font-family: "poppins", sans-serif;
+        font-weight: bolder;
+        line-height: 120%;
+        padding-top: 80px;
+    }
+    .labels h2 em{
+        font-weight: 100;
+        font-style: normal;
+        display: block;
+    }
+    .labels .nameP,
+    .labels .dateP{
+        position: relative;
+        z-index: 3;
+    }
+    .labels .nameP{
+        --webkit-print-color-adjust: exact;
+        color-adjust: exact; /* Non-Webkit Browsers */                
+        font-size:26px;
+        font-weight: bold;
+        color: #F8E71C;
+    }
+    svg{
+        position: relative;
+        z-index: 3;
+        width: 600px;
+        height: 600px;     
+    }
+    .svgReportName{
+        fill: #fff;
+        font-family: "poppins", sans-serif;
+        font-size: 80px;
+        font-weight: 800;
+    }
+    .slight{
+        font-weight: 200;
+    }
+
+    .svgMeta{
+    font:400 20px "Lato", sans-serif;
+    fill: #F8E71C;
+    }
+    .svgDate{
+    font:400 16px "Lato", sans-serif;
+    fill: #fff;
+    }
+    header{
+        padding: 30px;
+    }
+    .leftHdr{
+        position: relative;
+    }
+    header h3{
+        font: 20px/90px 'Lato', sans-serif;
+        color: #000;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 3;
+        padding: 0 0 0 20px;
+        margin: 0;
+		text-align: left;
+    }
+    .hdrTopImg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    .hdrRight{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+    }
+	table.report-container {
+      page-break-after:always;
+	}
+	thead.report-header {
+		  display:table-header-group;
+		  text-align: left;
+	}
+	tfoot.report-footer {
+		  display:table-footer-group;
+	} 
+	.footer-info {
+		padding: 40px;
+	}
+	.footer-info-logo {
+		width: 200px;
+	}
+	.footer-info-seperator {
+		width: calc(100% - 240px);
+		height: 1px;
+		position: relative;
+		top: -4px;
+	}
+	.footer-info-pagination {
+		border-radius: 50%;
+		border: 1px solid #DCC5F1;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		font: 15px/30px 'Lato', sans-serif;
+		color: #8C40D1;
+		display: inline-block;
+	}
+	/*.pagenum:after {
+		counter-increment: page;
+		content: counter(page);
+	}*/
+	.report-content .main {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	  .main h1{
+        font-family: 'Lato', sans-serif;
+        font-size: 35px;
+        font-weight: bold;
+        color: #7D49C9;
+        letter-spacing: 0;
+		margin-bottom: 25px;
+    }
+    .main h1 em{
+        font-weight: 200;
+        display: block;
+    }
+    .main h2{
+        font-family: 'Lato', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        color: #7D49C9;
+        letter-spacing: 0;
+    }    
+    .main p{
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        color: #000000;
+        letter-spacing: 0;
+        line-height: 25px;
+		margin-bottom: 25px;
+    }
+	.mb-0 {
+		margin-bottom: 0px;
+	}
+	ul {
+		list-style: none;
+	}
+	li {
+		list-style: none;
+	}
+	.dna-fit {
+		display: table;
+		margin-bottom: 20px;
+	}
+	.dna-fit img {
+		display: table-cell;
+		width: 82px;
+	}
+	.dna-fit-content {
+		display: table-cell;
+		vertical-align: middle;
+		padding-left: 20px;
+	}
+	.dna-fit-content p:last-child {
+		margin-bottom: 0;
+	}
+	.dna-fit-content h3 {
+		font-size: 20px;
+		line-height: 26px;
+	}
+	.dna-fit-wrapper {
+		margin-bottom: 25px;
+	}
+	.mb-25 {
+		margin-bottom: 25px;
+	}
+	.endurance-wrapper {
+		display: table;
+		width: 100%;
+	}
+	.endurance-content {
+		display: table-cell;
+		width: 50%;
+		padding-left: 50px;
+	}
+	.endurance-content h4 {
+		margin-bottom: 25px;
+		font-size: 25px;
+		font-weight: 400;
+		line-height: 30px;
+	}
+	.endurance-left {
+		border-right: 1px solid #F0F0F0;
+	}
+	.endurance-item {
+		display: table;
+		margin-bottom: 15px;
+	}
+	.endurance-item img {
+		display: table-cell;
+		width: 60px;
+	}
+	.endurance-item p {
+		display: table-cell;
+		vertical-align: middle;
+		padding-left: 20px;
+	}
+	.d-table {
+		display: table;
+	}
+	.d-table-cell {
+		display: table-cell;
+	}
+	.personal-response .d-table-cell {
+		vertical-align: top;
+	}
+	.personal-response-content svg.d-table-cell {
+		width: 40px;
+		height: 100px;
+	}
+	.personal-response-content p {
+		margin-bottom: 0;
+		font-size: 20px;
+	}
+	.personal-response-img {
+		padding-left: 50px;
+	}
+	.personal-response-content {
+		padding-left: 50px;
+	}
+	.personal-response {
+		margin-bottom: 50px;
+	}
+	.power-endurance-table table caption {
+		background: #B49CD8 !important;
+		font-size: 22px;
+		padding: 15px;
+		text-align: center;
+	}
+	.power-endurance-table table th {
+		background: #AB84D4 !important;
+		padding: 15px;
+		text-align: center;
+	}
+	.power-endurance-table table td {
+		background: #F8F1FF !important;
+		padding: 15px;
+		text-align: center;
+	}
+	.power-endurance-table-left {
+		padding-right: 50px;
+	}
+	.w-100 {
+		width: 100%;
+	}
+	.page-wrapper {
+		padding-top: 50px;
+	}
+    </style>
+</head>
+<body>
+    <div class="frontPage">
+        <!-- Decor Top Left -->
+        <img src="images/img-top-1.png" alt="" class="topImg1" />
+        <!-- Decor Top Left -->        
+        <!-- Center Bubble that holds all stuff -->
+        <div class="center-banner">
+            <div class="logo">
+                <img src="images/shivom-logo.png" alt="" class="shivomLogo" />
+            </div>
+            <div class="labels">
+                <svg>
+                    <text dominant-baseline="middle" class="slight svgReportName" text-anchor="middle" x=50% y=30%>Your</text>
+                    <text dominant-baseline="middle" class="svgReportName" text-anchor="middle" x=50% y=45%>Genotype</text>
+                    <text dominant-baseline="middle" class="svgReportName" text-anchor="middle" x=50% y=60%>Report</text>
+
+                    <text dominant-baseline="middle" class="svgMeta" text-anchor="middle" x=50% y=75%>Orgname</text>
+                    <text dominant-baseline="middle" class="svgDate" text-anchor="middle" x=50% y=82%>OrgDate</text>
+                 </svg>                
+                <!-- <h2><em>Your</em> Genotype Report</h2>
+                <p class="nameP">Bryan Habana  | 5056015132736</p>
+                <p class="dateP">2016-11-03</p> -->
+                <img src="file:///Users/user2/Downloads/shivom-reports/images/bubble.png" class="bubble" />
+            </div>
+        </div>
+        <!-- Center Bubble that holds all stuff -->
+        <!-- Footer left bottom -->
+        <img src="images/bottom-left1.png" alt="" class="footerleft" />
+        <!-- Footer left bottom -->
+        <!-- Footer right bottom -->
+        <img src="images/bottom-right2.png" alt="" class="footerright" />
+        <!-- Footer right bottom -->
+    </div>
+	<!--front page end-->
+	<!--inner pages-->
+	<table class="report-container">
+	  <thead class="report-header">
+		<tr>
+		  <th class="report-header-cell">
+			<div class="header-info">
+				<header>
+					<div class="leftHdr"><h3>Genotype Report</h3>
+						<img src="images/inner-dothdr.png" alt="" class="hdrTopImg">
+					</div>
+					<div class="rightHdr">
+						<img src="images/innerpatrnheader.png" class="hdrRight" />
+					</div>
+				</header>
+			</div>
+		  </th>
+		</tr>
+	  </thead>
+	  <tfoot class="report-footer">
+		<tr>
+		  <td class="report-footer-cell">
+			<div class="footer-info">
+			  <div class="footer-info-pagination"><span class="pagenum">1</span></div>
+			  <img class="footer-info-seperator" src="images/sep.png">
+			  <img class="footer-info-logo" src="images/shivom-logo.png">
+			</div>
+		  </td>
+		</tr>
+	  </tfoot>
+	  <tbody class="report-content">
+		<tr>
+		  <td class="report-content-cell">
+			<div class="main">
+				<h1 class="mb-25"><em>Welcome to your personal </em>DNAFit Premium Report!</h1>
+				<p>It gives us great pleasure to enclose your unique DNA results. Our laboratory has tested your swabs for your response to a selection of key genes that are associated with health and fitness. Your individual results are presented for you in this report, along with a basic grounding in genetic science and the role genetics can play for our personal wellbeing, as well as our athletic potential. We have also included with this report our full DNAFit Genotype Support Guide to help you learn more about where your individual results lie in the larger genetic landscape.</p>
+
+				<p>The recent explosion in genetic science has revealed new connections between genes and exercise trainability. To fulfill your fitness or sporting objectives, it can therefore be extremely important to make the appropriate choices to best match your unique genetic make-up. By helping you understand how your genetic profile affects you, DNAFit provides unparalleled insight and knowledge to help you optimize your physical health and fitness.</p>
+
+				<h2>What does my DNAFit Premium report tell me?</h2>
+				<p>From your DNA results, we reveal a unique scientific deep-dive in to the following key areas -</p>
+				<ul class="dna-fit-wrapper">
+					<li class="dna-fit">
+						<img src="images/dnafit-icon1.png">
+						<div class="dna-fit-content">
+							<h3>Endurance / Power profile</h3>
+							<p>Reveal your body’s response to key genes associated power or endurance potential. Understand how best to train for your body, whatever your personal goal may be.</p>
+						</div>
+					</li>
+					<li class="dna-fit">
+						<img src="images/dnafit-icon2.png">
+						<div class="dna-fit-content">
+							<h3>Aerobic potential (VO2 Max)</h3>
+							<p>VO2 max is the most commonly used marker for endurance potential, we can help you understand your genetic VO2 max potential.</p>
+						</div>
+					</li>
+					<li class="dna-fit">
+						<img src="images/dnafit-icon3.png">
+						<div class="dna-fit-content">
+							<h3>Post-Exercise Recovery</h3>
+							<p>Everybody has a different recovery ability - understand what your genes say about your natural recovery speed, and how to plan your exercise regime accordingly.</p>
+						</div>
+					</li>
+					<li class="dna-fit">
+						<img src="images/dnafit-icon4.png">
+						<div class="dna-fit-content">
+							<h3>Recovery Nutrition</h3>
+							<p>Get to know your body’s genetic need for certain vitamins and micronutrients. Learn how this can help you manage your recovery strategy after hard exercise.</p>
+						</div>
+					</li>
+					<li class="dna-fit">
+						<img src="images/dnafit-icon5.png">
+						<div class="dna-fit-content">
+							<h3>Injury risk</h3>
+							<p>Some people are more genetically prone to injury than others, we help you identify where your genes put you on the injury risk scale.</p>
+						</div>
+					</li>
+				</ul>
+				<div class="page-wrapper">
+					<h2 class="mb-25">Legal Disclaimer</h2>
+					<p>This report is based on your unique DNA results obtained by testing your swabs for your response to a selection of key genes that are associated with health and fitness.</p>
+					<p>Any assertions or recommendations in the report as to an exercise regime or diet, whether specific or general, are based on the following assumptions:</p>
+					<p>If you have any concerns at any time about whether or not these assumptions are correct in your particular circumstances, before acting, or not acting, on any of the assertions or recommendations, you must consult a medical practitioner.</p>
+					<p>You are at all times responsible for any actions you take, or do not take, as consequence of the assertions or recommendation in the report, and you will hold DNA Fit Limited, its officers, employees and representatives, harmless against all losses, costs and expenses in this regard, subject to what is set out below.</p>
+					<p>To the fullest extent permitted by law, neither DNA Fit Limited nor its officers, employees or representatives will be liable for any claim, proceedings, loss or damage of any kind arising out of or in connection with acting, or not acting, on the assertions or recommendations in the report. This is a comprehensive exclusion of liability that applies to all damage and loss, including, compensatory, direct, indirect or consequential damages, loss of data, income or profit, loss of or damage to property and claims of third parties, howsoever arising, whether in tort (including negligence), contract or otherwise.</p>
+					<p>Nothing in this statement is intended to limit any statutory rights you may have as a consumer or other statutory rights which may not be excluded, nor to exclude or limit our liability to you for death or personal injury resulting from DNA Fit Limited’s negligence or that of its officers, employees or other representatives. Nothing in this statement will operate to exclude or limit liability for fraud or fraudulent misrepresentation.</p>
+				</div>
+				<div class="page-wrapper">
+					<h2 class="mb-25">Power/ Endurance Profile</h2>
+					<p>Endurance training is defined as lower intensity activity, performed for a longer period time. Power training is identified as high intensity exercise performed quickly, but over shorter time periods. We have collated your body’s response to key genes associated with either power or endurance training to create the below summary of where your genetics lie on the spectrum.</p>
+					<div class="endurance-wrapper">
+						<div class="endurance-content endurance-left">
+							<h4>Example Endurance <br/>Activities</h4>
+							<div class="endurance-item">
+								<img src="images/endurance-icon1.png">
+								<p>Long-distance running</p>
+							</div>
+							<div class="endurance-item">
+								<img src="images/endurance-icon2.png">
+								<p>Mountain climbing</p>
+							</div>
+							<div class="endurance-item">
+								<img src="images/endurance-icon3.png">
+								<p>Road cycling</p>
+							</div>
+						</div>
+						<div class="endurance-content">
+							<h4>Example Power <br/>Activities</h4>
+							<div class="endurance-item">
+								<img src="images/endurance-icon4.png">
+								<p>Sprinting</p>
+							</div>
+							<div class="endurance-item">
+								<img src="images/endurance-icon5.png">
+								<p>Power lifting</p>
+							</div>
+							<div class="endurance-item">
+								<img src="images/endurance-icon6.png">
+								<p>Track cycling</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="page-wrapper">
+					<h2 class="mb-25">Your Personal Power/ <br/>Endurance Response</h2>
+					<div class="personal-response d-table">
+						<img class="d-table-cell personal-response-img"src="images/endurance-graph.png">
+						<div class="personal-response-content d-table-cell">
+							<div class="d-table">
+								<svg class="d-table-cell">
+								  <circle cx="15" cy="15" r="10" fill="#00B68D" /> 
+								</svg>
+								<div class="d-table-cell">
+									<p><strong>42.9%</strong></p>
+									<p>Power Response</p>
+								</div>
+							</div>
+							<div class="d-table">
+								<svg class="d-table-cell">
+								  <circle cx="15" cy="15" r="10" fill="#F5A623" /> 
+								</svg>
+								<div class="d-table-cell mb-25">
+									<p><strong>57.1%</strong></p>
+									<p>Endurance Response</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p>The above graph shows your percentage of genetic endurance and/or power results.</p>
+					<div class="d-table w-100">
+						<div class="d-table-cell power-endurance-table power-endurance-table-left">
+							<table class="w-100">
+								<caption>POWER</caption>
+								<thead>
+									<tr>
+										<th>Gene</th>
+										<th>Result</th>
+										<th>Effect</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>ACE</th>
+										<td>II</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>AGT</th>
+										<td>TT</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>ACTN3</th>
+										<td>CT</td>
+										<td>&#8901;</td>
+									</tr>
+									<tr>
+										<th>TRHR</th>
+										<td>TT</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>PPARA</th>
+										<td>CG</td>
+										<td>&#8901;</td>
+									</tr>
+									<tr>
+										<th>VEGF</th>
+										<td>CG</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>VDR</th>
+										<td>CT</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>ILC</th>
+										<td>GG</td>
+										<td>&#8901;&#8901;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="d-table-cell power-endurance-table">
+							<table class="w-100">
+								<caption>ENDURANCE</caption>
+								<thead>
+									<tr>
+										<th>Gene</th>
+										<th>Result</th>
+										<th>Effect</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>ADBR2</th>
+										<td>II</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>ADBR2</th>
+										<td>TT</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>ACTN3</th>
+										<td>CT</td>
+										<td>&#8901;</td>
+									</tr>
+									<tr>
+										<th>BDKRB2</th>
+										<td>CT</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>COL5A1</th>
+										<td>CT</td>
+										<td>&#8901;</td>
+									</tr>
+									<tr>
+										<th>NRF</th>
+										<td>AA</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>PPARGC1A</th>
+										<td>GG</td>
+										<td>&#8211;</td>
+									</tr>
+									<tr>
+										<th>PPARA</th>
+										<td>CG</td>
+										<td>&#8901;&#8901;</td>
+									</tr>
+									<tr>
+										<th>CRP</th>
+										<td>GG</td>
+										<td>&#8901;&#8901;</td>
+									</tr>
+									<tr>
+										<th>VEGF</th>
+										<td>CG</td>
+										<td>&#8901;&#8901;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>	
+			</div>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+</body>
+</html>
