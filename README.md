@@ -1,3 +1,3 @@
 # html-to-pdf
 
-sdk.js creates the pdf buffer
+## sdk.js creates the pdf
