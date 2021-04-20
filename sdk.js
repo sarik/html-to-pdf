@@ -27,6 +27,14 @@ async function genratePDf() {
   } catch (e) {
     await browser.close();
     //throw new Error('Something bad happened'); 
+    await new Promise((res,rej) => setTimeout(() => res(""),3000))
+    //Check if the shell command waits
+    /*await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('foo');
+        }, 300);
+      });*/
+    console.log("somethign")
     process.exit(1)
   }
 }
